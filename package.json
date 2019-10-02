@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "ws": "PORT=1234 node ./node_modules/y-websocket/bin/server.js"
   },
   "dependencies": {
     "codemirror": "^5.49.0",
