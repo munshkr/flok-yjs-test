@@ -1133,6 +1133,11 @@ async-each@^1.0.1:
   resolved "https://registry.yarnpkg.com/async-each/-/async-each-1.0.3.tgz#b727dbf87d7651602f06f4d4ac387f47d91b0cbf"
   integrity sha512-z/WhQ5FPySLdvREByI2vZiTWwCnF0moMJ1hK9YQwDTHKh6I7/uSckMetoRGb5UBZPC1z0jlw+n/XCgjeH7y1AQ==
 
+async-limiter@~1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/async-limiter/-/async-limiter-1.0.1.tgz#dd379e94f0db8310b08291f9d64c3209766617fd"
+  integrity sha512-csOlWGAcRFJaI6m+F2WKdnMKr4HhdhFVBk0H/QbJFMCr+uO2kwohwXQPxw/9OCxp05r5ghVBFSyioixx3gfkNQ==
+
 async-retry@1.2.3:
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/async-retry/-/async-retry-1.2.3.tgz#a6521f338358d322b1a0012b79030c6f411d1ce0"
@@ -2955,6 +2960,16 @@ launch-editor@2.2.1:
   dependencies:
     chalk "^2.3.0"
     shell-quote "^1.6.1"
+
+lib0@0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/lib0/-/lib0-0.0.5.tgz#a051a949212de7733122a9cac3cc6ba6ce095515"
+  integrity sha512-3ElV6/t5Lv0Eczlnh/05q+Uq3RxQ/Q0zdN6LVtaUERQIDDZsP/CUXEGLsV8KZTgZwVFNCPGXNWYE+3WTOo+SHw==
+
+lib0@^0.1.0:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/lib0/-/lib0-0.1.1.tgz#da3cb2b97b1f1e0e36e8b0b2626e083f44e9a7aa"
+  integrity sha512-ghjoI4xL/xzVR1fRLYEOnJjYMguoI2dnDUf5HYOpTfD6R5GPKLml6xNKl4ZfBVmczkIOQPNthhukp6nlgbmDLw==
 
 load-json-file@^2.0.0:
   version "2.0.0"
@@ -5435,10 +5450,34 @@ write-file-atomic@^3.0.0:
     signal-exit "^3.0.2"
     typedarray-to-buffer "^3.1.5"
 
+ws@^6.2.1:
+  version "6.2.1"
+  resolved "https://registry.yarnpkg.com/ws/-/ws-6.2.1.tgz#442fdf0a47ed64f59b6a5d8ff130f4748ed524fb"
+  integrity sha512-GIyAXC2cB7LjvpgMt9EKS2ldqr0MTrORaleiOno6TweZ6r3TKtoFQWay/2PceJ3RuBasOHzXNn5Lrw1X0bEjqA==
+  dependencies:
+    async-limiter "~1.0.0"
+
 xtend@^4.0.0, xtend@~4.0.1:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/xtend/-/xtend-4.0.2.tgz#bb72779f5fa465186b1f438f674fa347fdb5db54"
   integrity sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==
+
+y-protocols@0.0.7:
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/y-protocols/-/y-protocols-0.0.7.tgz#5917299596d6b4ed85ae25d775405ae5371ebca7"
+  integrity sha512-vimoF3v/H9kMRBKQcbYppObK6FUITPL+huyvbYdPhLiLTSSm5dS7/BT1E/Wyl488CyoPoZTxiOqfu1WphwTe6A==
+  dependencies:
+    lib0 "0.0.5"
+
+y-websocket@1.0.0-6:
+  version "1.0.0-6"
+  resolved "https://registry.yarnpkg.com/y-websocket/-/y-websocket-1.0.0-6.tgz#8f546e578e090a8a041c179507f5b07be3f74f67"
+  integrity sha512-6ErkCn1CMMX+v7JafV99ayQdO3QxhbYC/mVQk8FHwBAFSSD3NiCXxvVuHyQL8aQvUpzTmqBCRwJmctJBl3SJQg==
+  dependencies:
+    lib0 "0.0.5"
+    y-protocols "0.0.7"
+  optionalDependencies:
+    ws "^6.2.1"
 
 y18n@^4.0.0:
   version "4.0.0"
@@ -5449,3 +5488,10 @@ yallist@^3.0.0, yallist@^3.0.2, yallist@^3.0.3:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/yallist/-/yallist-3.1.1.tgz#dbb7daf9bfd8bac9ab45ebf602b8cbad0d5d08fd"
   integrity sha512-a4UGQaWPH59mOXUYnAG2ewncQS4i4F43Tv3JoAM+s2VDAmS9NsK8GpDMLrCHPksFT7h3K6TOoUNn2pb7RoXx4g==
+
+yjs@13.0.0-97:
+  version "13.0.0-97"
+  resolved "https://registry.yarnpkg.com/yjs/-/yjs-13.0.0-97.tgz#8abccb41ffb8001583df993d33d856ff37fdcd7d"
+  integrity sha512-OQIBeG1ujayonLWmh8PqaBUUTZhUziFOmYNnggN5UtjtnfHASW1DxYUygYQj068gwQ36+Maqc8tOtallYbZS8A==
+  dependencies:
+    lib0 "^0.1.0"
