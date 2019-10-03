@@ -1,12 +1,45 @@
 import { UnControlled as CodeMirror } from "react-codemirror2";
+import * as Y from "yjs";
+import { WebsocketProvider } from "y-websocket";
+import { CodeMirrorBinding } from "y-codemirror";
 
 import "codemirror/lib/codemirror.css";
 import "codemirror/theme/material.css";
+
+const ConnectButton = ({ provider }) => (
+  <button
+    onClick={() =>
+      provider.shouldConnect ? provider.disconnect() : provider.connect()
+    }
+  >
+    {provider.shouldConnect ? "Disconnect" : "Connect"}
+  </button>
+);
 
 class TextBuffer extends React.Component {
   state = {
     value: ""
   };
+
+  componentDidMount() {
+    const { editor } = this.codeMirror;
+
+    console.log(editor);
+
+    const ydoc = new Y.Doc();
+    const provider = new WebsocketProvider(
+      `${location.protocol === "http:" ? "ws:" : "wss:"}${
+        location.hostname
+      }:3001`,
+      "codemirror",
+      ydoc
+    );
+    this.provider = provider;
+
+    const yText = ydoc.getText("codemirror");
+    const binding = new CodeMirrorBinding(yText, editor, provider.awareness);
+    this.binding = binding;
+  }
 
   render() {
     const options = {
@@ -14,10 +47,19 @@ class TextBuffer extends React.Component {
       lineNumbers: true
     };
     const { value } = this.state;
+    const { provider } = this;
 
     return (
-      <React.Fragment>
-        <CodeMirror className="buffer" value={value} options={options} />
+      <div>
+        {provider && <ConnectButton provider={provider} />}
+        <CodeMirror
+          ref={e => {
+            this.codeMirror = e;
+          }}
+          className="buffer"
+          value={value}
+          options={options}
+        />
 
         <style jsx global>{`
           .CodeMirror {
@@ -31,7 +73,7 @@ class TextBuffer extends React.Component {
             font-size: 20px;
           }
         `}</style>
-      </React.Fragment>
+      </div>
     );
   }
 }

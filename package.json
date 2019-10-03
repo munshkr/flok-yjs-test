@@ -6,12 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "ws": "PORT=1234 node ./node_modules/y-websocket/bin/server.js"
+    "ws": "PORT=3001 node ./node_modules/y-websocket/bin/server.js"
   },
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
     "codemirror": "^5.49.0",
     "next": "9.0.7",
+    "next-transpile-modules": "^2.3.1",
     "react": "16.10.1",
     "react-codemirror2": "^6.0.0",
     "react-dom": "16.10.1",
