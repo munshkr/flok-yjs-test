@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "ws": "PORT=3001 node ./node_modules/y-webrtc/bin/server.js"
+    "server": "PORT=3001 node ./node_modules/y-webrtc/bin/server.js"
   },
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
