@@ -1,6 +1,6 @@
 import { UnControlled as CodeMirror } from "react-codemirror2";
 import * as Y from "yjs";
-import { WebsocketProvider } from "y-websocket";
+import { WebrtcProvider } from "y-webrtc";
 import { CodeMirrorBinding } from "y-codemirror";
 
 import "codemirror/lib/codemirror.css";
@@ -27,13 +27,10 @@ class TextBuffer extends React.Component {
     console.log(editor);
 
     const ydoc = new Y.Doc();
-    const provider = new WebsocketProvider(
-      `${location.protocol === "http:" ? "ws:" : "wss:"}${
-        location.hostname
-      }:3001`,
-      "codemirror",
-      ydoc
-    );
+    const provider = new WebrtcProvider("test-room", ydoc, {
+      password: "mypassword",
+      signaling: ["ws://localhost:3001"]
+    });
     this.provider = provider;
 
     const yText = ydoc.getText("codemirror");

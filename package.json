@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "ws": "PORT=3001 node ./node_modules/y-websocket/bin/server.js"
+    "ws": "PORT=3001 node ./node_modules/y-webrtc/bin/server.js"
   },
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
@@ -17,7 +17,7 @@
     "react-codemirror2": "^6.0.0",
     "react-dom": "16.10.1",
     "y-codemirror": "^1.0.3",
-    "y-websocket": "1.0.0-6",
+    "y-webrtc": "^10.1.1",
     "yjs": "13.0.0-97"
   }
 }
