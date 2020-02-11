@@ -16,6 +16,18 @@ const ConnectButton = ({ provider }) => (
   </button>
 );
 
+/*
+type UserData = {
+  es: { [editorId: string]: UserPosData }; // editors
+  n: string; // username
+}
+
+type SessionDocumentType = {
+  contents: { [editorId: string]: string },
+  users: { [userId: string]: UserData }
+};
+*/
+
 class TextBuffer extends React.Component {
   state = {
     value: ""
@@ -26,16 +38,31 @@ class TextBuffer extends React.Component {
 
     console.log(editor);
 
-    const ydoc = new Y.Doc();
-    const provider = new WebrtcProvider("test-room", ydoc, {
-      password: "mypassword",
+    // Create document and provider
+    const doc = new Y.Doc();
+    const provider = new WebrtcProvider("flok", doc, {
+      password: "flok",
       signaling: ["ws://localhost:3001"]
     });
     this.provider = provider;
 
-    const yText = ydoc.getText("codemirror");
-    const binding = new CodeMirrorBinding(yText, editor, provider.awareness);
+    const editorId = "mainEditor";
+    const userId = "munshkr";
+    const userName = "munshkr";
+
+    // Bind text with CodeMirror editor
+    const text = doc.getText(`editors:${editorId}`);
+    const binding = new CodeMirrorBinding(text, editor, provider.awareness);
     this.binding = binding;
+
+    // Build Users map
+    const userMap = doc.getMap(`users:${userId}`);
+    userMap.set("n", userName);
+
+    // Buil
+    const userPosMap = doc.getMap(`users:${userId}:pos:${editorId}`);
+    userPosMap.set("l", 1);
+    userPosMap.set("c", 2);
   }
 
   render() {
