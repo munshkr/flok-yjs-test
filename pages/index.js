@@ -1,16 +1,11 @@
 import React from "react";
-import Head from "next/head";
+
+import Layout from "../components/Layout";
 import TextBuffer from "../components/TextBuffer";
 
-const Home = () => (
-  <div>
-    <Head>
-      <title>flok-yjs-test</title>
-      <link rel="icon" href="/favicon.ico" importance="low" />
-    </Head>
-    <div>
-      <TextBuffer />
-    </div>
+const Index = () => (
+  <Layout>
+    <TextBuffer />
     <style jsx global>{`
       html,
       body {
@@ -18,7 +13,7 @@ const Home = () => (
         padding: 0;
       }
     `}</style>
-  </div>
+  </Layout>
 );
 
-export default Home;
+export default Index;

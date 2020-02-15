@@ -33,8 +33,6 @@ class TextBuffer extends React.Component {
   componentDidMount() {
     const { editor } = this.codeMirror;
 
-    console.log(editor);
-
     // Create document and provider
     const doc = new Y.Doc();
     const provider = new WebrtcProvider("flok", doc, {
