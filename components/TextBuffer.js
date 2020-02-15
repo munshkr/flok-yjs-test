@@ -31,13 +31,15 @@ class TextBuffer extends React.Component {
   };
 
   componentDidMount() {
+    const { host, username } = this.props;
     const { editor } = this.codeMirror;
+
+    const [hostname, _port] = host.split(":");
 
     // Create document and provider
     const doc = new Y.Doc();
     const provider = new WebrtcProvider("flok", doc, {
-      password: "flok",
-      signaling: ["ws://localhost:3001"]
+      signaling: [`ws://${hostname}:3001`]
     });
     this.provider = provider;
 
@@ -47,7 +49,12 @@ class TextBuffer extends React.Component {
 
     // Bind text with CodeMirror editor
     const text = doc.getText(`editors:${editorId}`);
-    const binding = new CodeMirrorBinding(text, editor, provider.awareness);
+    const binding = new CodeMirrorBinding(
+      text,
+      editor,
+      username,
+      provider.awareness
+    );
     this.binding = binding;
 
     // Build Users map
@@ -97,7 +104,7 @@ class TextBuffer extends React.Component {
             bottom: 0;
             right: 0;
             height: 100%;
-            font-family: Monaco;
+            font-family: Monaco, monospace;
             font-size: 20px;
           }
           .remote-caret {
@@ -112,7 +119,7 @@ class TextBuffer extends React.Component {
             top: -1.05em;
             font-size: 16px;
             background-color: rgb(250, 129, 0);
-            font-family: Monaco;
+            font-family: Monaco, monospace;
             font-style: normal;
             font-weight: normal;
             line-height: normal;

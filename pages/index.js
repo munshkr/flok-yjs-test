@@ -3,9 +3,9 @@ import React from "react";
 import Layout from "../components/Layout";
 import TextBuffer from "../components/TextBuffer";
 
-const Index = () => (
+const Index = ({ host, username }) => (
   <Layout>
-    <TextBuffer />
+    <TextBuffer host={host} username={username} />
     <style jsx global>{`
       html,
       body {
@@ -15,5 +15,10 @@ const Index = () => (
     `}</style>
   </Layout>
 );
+
+Index.getInitialProps = ({ req, query }) => {
+  const host = req && req.headers && req.headers.host;
+  return { host, username: query.username };
+};
 
 export default Index;
