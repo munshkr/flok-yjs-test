@@ -1,7 +1,7 @@
 import { UnControlled as CodeMirror } from "react-codemirror2";
 import * as Y from "yjs";
 import { WebrtcProvider } from "y-webrtc";
-import { CodeMirrorBinding } from "y-codemirror";
+import { CodeMirrorBinding } from "../lib/y-codemirror";
 
 import "codemirror/lib/codemirror.css";
 import "codemirror/theme/material.css";
