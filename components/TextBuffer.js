@@ -1,5 +1,5 @@
-import { UnControlled as CodeMirror } from "react-codemirror2";
 import * as Y from "yjs";
+import { UnControlled as CodeMirror } from "react-codemirror2";
 import { WebrtcProvider } from "y-webrtc";
 import { CodeMirrorBinding } from "../lib/y-codemirror";
 
@@ -60,6 +60,16 @@ class TextBuffer extends React.Component {
     userPosMap.set("c", 2);
   }
 
+  componentWillUnmount() {
+    if (this.binding) {
+      this.binding.destroy();
+    }
+
+    if (this.provider) {
+      this.provider.destroy();
+    }
+  }
+
   render() {
     const options = {
       theme: "material",
@@ -69,7 +79,7 @@ class TextBuffer extends React.Component {
     const { provider } = this;
 
     return (
-      <div>
+      <React.Fragment>
         {provider && <ConnectButton provider={provider} />}
         <CodeMirror
           ref={e => {
@@ -79,7 +89,6 @@ class TextBuffer extends React.Component {
           value={value}
           options={options}
         />
-
         <style jsx global>{`
           .CodeMirror {
             position: absolute;
@@ -92,7 +101,7 @@ class TextBuffer extends React.Component {
             font-size: 20px;
           }
         `}</style>
-      </div>
+      </React.Fragment>
     );
   }
 }
