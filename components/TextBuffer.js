@@ -114,11 +114,12 @@ class TextBuffer extends React.Component {
             border-left: black;
             border-left-style: solid;
             border-left-width: 2px;
-            height: 1em;
+            height: 1.2em;
           }
           .remote-caret > div {
             position: relative;
-            top: -1.05em;
+            top: 1.5em;
+            left: -2px;
             font-size: 16px;
             background-color: rgb(250, 129, 0);
             font-family: Monaco, monospace;
