@@ -9,13 +9,13 @@
     "server": "PORT=3001 node ./node_modules/y-webrtc/bin/server.js"
   },
   "dependencies": {
-    "codemirror": "^5.49.0",
+    "codemirror": "^5.51.0",
     "next": "^9.2.1",
     "next-transpile-modules": "^2.3.1",
     "react": "^16.12.0",
     "react-codemirror2": "^6.0.0",
     "react-dom": "^16.12.0",
     "y-webrtc": "^10.1.1",
-    "yjs": "13.0.0-97"
+    "yjs": "13.0.0-105"
   }
 }
