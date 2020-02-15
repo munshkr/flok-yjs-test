@@ -35,10 +35,12 @@ class TextBuffer extends React.Component {
     const { editor } = this.codeMirror;
 
     const [hostname, _port] = host.split(":");
+    const isSecure = location.protocol === "https:";
 
     // Create document and provider
     const doc = new Y.Doc();
     const provider = new WebrtcProvider("flok", doc, {
+      password: isSecure ? "flok" : null,
       signaling: [`ws://${hostname}:3001`]
     });
     this.provider = provider;
