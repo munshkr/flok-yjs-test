@@ -9,7 +9,6 @@
     "server": "PORT=3001 node ./node_modules/y-webrtc/bin/server.js"
   },
   "dependencies": {
-    "@zeit/next-css": "^1.0.1",
     "codemirror": "^5.49.0",
     "next": "^9.2.1",
     "next-transpile-modules": "^2.3.1",

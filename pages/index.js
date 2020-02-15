@@ -5,7 +5,7 @@ import TextBuffer from "../components/TextBuffer";
 const Home = () => (
   <div>
     <Head>
-      <title>flok2</title>
+      <title>flok-yjs-test</title>
       <link rel="icon" href="/static/favicon.ico" importance="low" />
     </Head>
     <div>
