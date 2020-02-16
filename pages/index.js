@@ -1,11 +1,15 @@
 import React from "react";
+import getConfig from "next/config";
 
 import Layout from "../components/Layout";
 import TextBuffer from "../components/TextBuffer";
 
+const { publicRuntimeConfig } = getConfig();
+const { session } = publicRuntimeConfig;
+
 const Index = ({ host, username }) => (
   <Layout>
-    <TextBuffer host={host} username={username} />
+    <TextBuffer host={host} username={username} session={session} />
     <style jsx global>{`
       html,
       body {

@@ -9,7 +9,7 @@ class TextBuffer extends React.Component {
   };
 
   componentDidMount() {
-    const { host, username } = this.props;
+    const { host, username, session } = this.props;
     const { editor } = this.codeMirror;
 
     const [hostname, _port] = host.split(":");
@@ -17,7 +17,7 @@ class TextBuffer extends React.Component {
 
     // Create document and provider
     const doc = new Y.Doc();
-    const provider = new WebrtcProvider("flok", doc, {
+    const provider = new WebrtcProvider(`flok:${session}`, doc, {
       password: isSecure ? "flok" : null,
       signaling: [`ws://${hostname}:3001`]
     });
