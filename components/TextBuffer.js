@@ -3,28 +3,6 @@ import { UnControlled as CodeMirror } from "react-codemirror2";
 import { WebrtcProvider } from "y-webrtc";
 import { CodeMirrorBinding } from "../lib/y-codemirror";
 
-const ConnectButton = ({ provider }) => (
-  <button
-    onClick={() =>
-      provider.shouldConnect ? provider.disconnect() : provider.connect()
-    }
-  >
-    {provider.shouldConnect ? "Disconnect" : "Connect"}
-  </button>
-);
-
-/*
-type UserData = {
-  es: { [editorId: string]: UserPosData }; // editors
-  n: string; // username
-}
-
-type SessionDocumentType = {
-  contents: { [editorId: string]: string },
-  users: { [userId: string]: UserData }
-};
-*/
-
 class TextBuffer extends React.Component {
   state = {
     value: ""
@@ -46,8 +24,6 @@ class TextBuffer extends React.Component {
     this.provider = provider;
 
     const editorId = "mainEditor";
-    const userId = "munshkr";
-    const userName = "munshkr";
 
     // Bind text with CodeMirror editor
     const text = doc.getText(`editors:${editorId}`);
@@ -58,15 +34,6 @@ class TextBuffer extends React.Component {
       provider.awareness
     );
     this.binding = binding;
-
-    // Build Users map
-    const userMap = doc.getMap(`users:${userId}`);
-    userMap.set("n", userName);
-
-    // Buil
-    const userPosMap = doc.getMap(`users:${userId}:pos:${editorId}`);
-    userPosMap.set("l", 1);
-    userPosMap.set("c", 2);
   }
 
   componentWillUnmount() {
@@ -85,11 +52,9 @@ class TextBuffer extends React.Component {
       lineNumbers: true
     };
     const { value } = this.state;
-    const { provider } = this;
 
     return (
       <React.Fragment>
-        {provider && <ConnectButton provider={provider} />}
         <CodeMirror
           ref={e => {
             this.codeMirror = e;
