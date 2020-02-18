@@ -1,7 +1,7 @@
 import * as Y from "yjs";
 import { UnControlled as CodeMirror } from "react-codemirror2";
 import { WebrtcProvider } from "y-webrtc";
-import { CodeMirrorBinding } from "../lib/y-codemirror";
+import { CodeMirrorBinding } from "y-codemirror";
 
 class TextBuffer extends React.Component {
   state = {
@@ -30,10 +30,12 @@ class TextBuffer extends React.Component {
     const binding = new CodeMirrorBinding(
       text,
       editor,
-      username,
       provider.awareness
     );
     this.binding = binding;
+
+    // Set username
+    provider.awareness.setLocalStateField("user", { name: username });
   }
 
   componentWillUnmount() {
